@@ -6,22 +6,30 @@
 
 class Empregado {
 	
+  private:
+    std::string _nome;  
+    double _salarioHora;
+    int _jornadaPadrao = 8;
+    double _valorHoraExtra = 0.5;
+
   public:
-    double salarioHora;  
-    double quotaMensalVendas;  
 
+    Empregado(std::string nome, double salarioHora):
+      _nome(nome), _salarioHora(salarioHora) {};
 
-    double pagamentoMes(double horasTrabalhadas) {
- 
-      double t = horasTrabalhadas;
-	  
-	  //Cálculo de hora extra (+50% se horasTrabalhadas > 8)
-      if (horasTrabalhadas > 8) {
-        double x = horasTrabalhadas - 8;
-        t += x / 2;
-      }
-	  return t * salarioHora;
-    }
+    /*
+      //Esta funcao calcula o pagamento mensal. Caso as horasTrabalhadas
+       sejam superiores a jornada padrao, o empregado recebe um adicional
+       por cada hora extra.
+    */
+
+    double pagamentoMes(double horasTrabalhadas);
+
+    std::string getNome();
+    void setNome(std::string nome);
+
+    double getSalarioHora();
+    void setSalarioHora(double salarioHora);
 	
 };
 
